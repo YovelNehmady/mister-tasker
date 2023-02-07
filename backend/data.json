@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Delete old files",
+        "status": "new",
+        "description": "Need to Delete old files lorem dore jud fgrt yagt ajfwe e3 ",
+        "importance": 3,
+        "createdAt": 1675588499,
+        "lastTriedAt": null,
+        "triesCount": 0,
+        "doneAt": null,
+        "errors": []
+    },
+    {
+        "title": "Insert new files",
+        "status": "failed",
+        "description": "Need to Insert new files lorem dore jud fgrt yagt ajfwe e3 ",
+        "importance": 2,
+        "createdAt": 1675588497,
+        "lastTriedAt": 1675790806,
+        "triesCount": 1,
+        "doneAt": null,
+        "errors": [
+            "Server is down"
+        ]
+    },
+    {
+        "title": "Load new img for HR",
+        "status": "running",
+        "description": "Need to Load new img for HR lorem dore jud fgrt yagt ajfwe e3 ",
+        "importance": 3,
+        "createdAt": 1675790806,
+        "lastTriedAt": null,
+        "triesCount": 0,
+        "doneAt": null,
+        "errors": []
+    },
+    {
+        "title": "Email my new phone to my boss",
+        "status": "done",
+        "description": "Need to Email my new phone to my boss lorem dore jud fgrt yagt ajfwe e3 ",
+        "importance": 1,
+        "createdAt": 1675588497,
+        "lastTriedAt": 1675790806,
+        "triesCount": 4,
+        "doneAt": 1675790807,
+        "errors": [
+            "Server is down",
+            "Device is bussy",
+            "unvaliad logetToken"
+        ]
+    }
+]
