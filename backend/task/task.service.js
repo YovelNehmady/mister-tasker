@@ -17,7 +17,7 @@ async function getById(taskId) {
         const task = collection.findOne({ _id: new ObjectId(taskId) })
         return task
     } catch (err) {
-        console.log(err);
+        console.log(err)
         throw err
     }
 }
@@ -44,13 +44,16 @@ async function add(task) {
 
 async function update(task) {
     try {
-        const taskToSave = {
+
+        let taskToEdit = {
             status: task.status,
-            lastTriedAt: Date.now(),
-            triesCount: task.triesCount++,
+            doneAt: task.doneAt,
+            errors: task.errors,
+            lastTriedAt: task.lastTriedAt,
+            triesCount: task.triesCount,
         }
         const collection = await dbService.getCollection('task')
-        await collection.updateOne({ _id: new ObjectId(task._id) }, { $set: taskToSave })
+        await collection.updateOne({ _id: new ObjectId(task._id) }, { $set: taskToEdit })
         return task
     } catch (err) {
         throw err

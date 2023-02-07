@@ -1,3 +1,4 @@
+const { execute } = require('../services/external.service.js')
 const taskService = require('./task.service.js')
 
 async function gettasks(req, res) {
@@ -49,10 +50,41 @@ async function removetask(req, res) {
   }
 }
 
+async function performTask(req, res) {
+  const task = req.body
+  try {
+    task.status = 'running'
+    await taskService.update(task)
+    
+    await execute(task)
+    
+    task.status = 'done'
+    task.doneAt = Date.now()
+    await taskService.update(task)
+    console.log('try',task);
+
+  } catch (error) {
+    
+    task.status = 'failed'
+    task.errors.push(error)
+    await taskService.update(task)
+    console.log('catch',task);
+
+  } finally {
+    
+    task.lastTriedAt = Date.now()
+    task.triesCount++
+    const taskAfterExcute = await taskService.update(task)
+    console.log('fainely',taskAfterExcute)
+    res.send(taskAfterExcute)
+  }
+}
+
 module.exports = {
   gettasks,
   gettaskById,
   addtask,
   updatetask,
-  removetask
+  removetask,
+  performTask
 }
